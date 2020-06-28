@@ -1,6 +1,6 @@
 #include "Testing\TestSuite.au3"
 
-Global Const $tests = [testMostBasic, testRequest_GET, testRequest_POST]
+Global Const $tests = [testMostBasic, testRequest_GET, testRequest_POST, testRequest_PUT, testRequest_PATCH, testRequest_DELETE, testRequest_OPTIONS, testRequest_HEAD]
 
 Runner($tests)
 
@@ -25,3 +25,44 @@ Func testRequest_POST()
 	Return $oHTTP.Status = 200 AND $oHTTP.ResponseText == 'OK'
 EndFunc   ;==>Test_1
 
+Func testRequest_PUT()
+	Local Const $pid = RunIsolatedInstanceOf("Basic response types.au3")
+	Local Const $oHTTP = SyncRequest("PUT", "/test")
+	ProcessClose($pid)
+	Return $oHTTP.Status = 200 AND $oHTTP.ResponseText == 'OK'
+EndFunc   ;==>Test_1
+
+
+Func testRequest_PATCH()
+	Local Const $pid = RunIsolatedInstanceOf("Basic response types.au3")
+	Local Const $oHTTP = SyncRequest("PATCH", "/test")
+	ProcessClose($pid)
+	Return $oHTTP.Status = 200 AND $oHTTP.ResponseText == 'OK'
+EndFunc   ;==>Test_1
+
+
+Func testRequest_DELETE()
+	Local Const $pid = RunIsolatedInstanceOf("Basic response types.au3")
+	Local Const $oHTTP = SyncRequest("DELETE", "/test")
+	ProcessClose($pid)
+	Return $oHTTP.Status = 200 AND $oHTTP.ResponseText == 'OK'
+EndFunc   ;==>Test_1
+
+
+Func testRequest_OPTIONS()
+	Local Const $pid = RunIsolatedInstanceOf("Basic response types.au3")
+	Local Const $oHTTP = SyncRequest("OPTIONS", "/test")
+	ProcessClose($pid)
+	Return $oHTTP.Status = 200 AND $oHTTP.ResponseText == 'OK'
+EndFunc   ;==>Test_1
+
+
+Func testRequest_HEAD()
+	Local Const $pid = RunIsolatedInstanceOf("Basic response types.au3")
+	Local Const $oHTTP = SyncRequest("HEAD", "/test")
+	ProcessClose($pid)
+	Return $oHTTP.Status = 200 AND $oHTTP.ResponseText == 'OK'
+EndFunc   ;==>Test_1
+
+
+; Request data.au3
