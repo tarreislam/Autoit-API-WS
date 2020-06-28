@@ -661,7 +661,7 @@ Func __API_RES_toJson(Const $content)
 
 		Next
 
-		$sRet = StringTrimRight($sRet, 1) & "}"
+		$sRet = StringRight($sRet, 1) == ',' ? StringTrimRight($sRet, 1) & "}" : $sRet & "}"
 
 	ElseIf IsArray($content) Then
 		$sRet = '['
@@ -680,7 +680,7 @@ Func __API_RES_toJson(Const $content)
 
 		Next
 
-		$sRet = StringTrimRight($sRet, 1) & "]"
+		$sRet = StringRight($sRet, 1) == ',' ? StringTrimRight($sRet, 1) & "]" : $sRet & "]"
 
 	EndIf
 
