@@ -1,6 +1,6 @@
 #include "Testing\TestSuite.au3"
 
-Global Const $tests = [testMostBasic, testRequest_GET, testRequest_POST, testRequest_PUT, testRequest_PATCH, testRequest_DELETE, testRequest_OPTIONS, testRequest_HEAD]
+Global Const $tests = [testMostBasic, testRequest_GET, testRequest_POST, testRequest_PUT, testRequest_PATCH, testRequest_DELETE, testRequest_OPTIONS, testRequest_HEAD, testRequest_GetQueryParams]
 
 Runner($tests)
 
@@ -62,6 +62,14 @@ Func testRequest_HEAD()
 	Local Const $oHTTP = SyncRequest("HEAD", "/test")
 	ProcessClose($pid)
 	Return $oHTTP.Status = 200 AND $oHTTP.ResponseText == 'OK'
+EndFunc   ;==>Test_1
+
+
+Func testRequest_GetQueryParams()
+	Local Const $pid = RunIsolatedInstanceOf("Request data.au3")
+	Local Const $oHTTP = SyncRequest("HEAD", "/test?test=123")
+	ProcessClose($pid)
+	Return $oHTTP.Status = 200 AND $oHTTP.ResponseText == '{"test": 123}'
 EndFunc   ;==>Test_1
 
 

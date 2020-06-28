@@ -14,21 +14,8 @@ WEnd
 
 Func CB_Test(Const $oRequest)
 
-	;
-	; Create an empty object
-	Local $object = ObjCreate("Scripting.Dictionary")
 
-	; List all headers
-	Local $aHeaderKeys = $oRequest.keys()
-	For $i = 0 To $oRequest.count() -1
-		; Fetch the header KEY
-		Local $key = $aHeaderKeys[$i]
-		Local $value = $oRequest.item($key)
-
-		; Place in new SD
-		$object.add($key, $value)
-	Next
 
 	; Pass the object back to our router, which will convert it into escaped json
-	Return $object
+	Return $oRequest
 EndFunc
