@@ -719,6 +719,11 @@ Func __API_RES_toJson_parseValue($value, $bRaw = False)
 		$value = '"' & StringReplace($value, '"', '\"') & '"'
 	EndIf
 
+	; consider empty strings as nulls
+	If StringLen($value) == 0 Then
+		$value = '""'
+	EndIf
+
 
 	Return $value
 EndFunc   ;==>__API_RES_toJson_parseValue
