@@ -424,7 +424,7 @@ Func _API_MGR_ROUTER_HANDLE(Const $mainSocket = $g__API_MainSocket)
 		EndIf
 
 		Local $routeName = $registredRoute[0] ; GET /path/to/stuff
-		Local $routeNameAsRe = "^" & StringRegExpReplace($routeName, "(?i)(\{[a-z_]+[a-z_0-9]*\})", "([^/]+)") & "$"; the route name but as an regex
+		Local $routeNameAsRe = "^" & StringRegExpReplace($routeName, "(?i)(\{[a-z_]+[a-z_0-9]*\})", "([^/]+)") & "\/*$"; the route name but as an regex
 		Local $callBack = $registredRoute[1]; Can be String or FuncName
 
 		; Get the requested path with option éx "GET /path/to/stuff/1" without query params ?etc
