@@ -405,10 +405,10 @@ Func _API_MGR_ROUTER_HANDLE(Const $mainSocket = $g__API_MainSocket)
 	Do
 		Local $curResp = TCPRecv($connectedSocket, 1024)
 		$response &= $curResp
-	Until @error Or StringLen($response) > 0 Or $curResp == ""
+	Until @error Or $curResp == ""
 
-	$response = $curResp
-	; ConsoleWrite( $response & @LF)
+	; convert crlfs to lf
+	$response = StringReplace($response, @CRLF, @LF)
 
 	Local $responseContent = Null
 	Local $routeFound = False
