@@ -710,7 +710,7 @@ Func __API_RES_toJson_parseValue($value, $bRaw = False)
 	EndIf
 
 	; Escape stringerals
-	If Not StringRegExp($value, "^[0-9.]*$") And Not $bRaw Then
+	If IsString($value) And Not $bRaw Then
 		; Escape unicode
 		$value = __API_URIEscapeUnicode($value)
 		; Escape slashes (This will ignore the unicode esapce)

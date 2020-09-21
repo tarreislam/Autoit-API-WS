@@ -56,10 +56,14 @@ Func CB_ObjectOfTypesResponse()
 	Local Const $oObj = ObjCreate("Scripting.Dictionary")
 	Local Const $arr[0] = []
 	$oObj.add('string', '')
+	$oObj.add('ip', '192.168.1.0')
 	$oObj.add('number_a', 1337)
 	$oObj.add('number_b', 13.37)
+	$oObj.add('number_c', "13.37")
 	$oObj.add('object', ObjCreate("Scripting.Dictionary"))
 	$oObj.add('array', $arr)
 	$oObj.add('null', Null)
+	$oObj.add('bool_a', True)
+	$oObj.add('bool_b', False)
 	Return $oObj
 EndFunc

@@ -99,5 +99,5 @@ Func testCB_ObjectOfTypesResponse()
 	Local Const $pid = RunIsolatedInstanceOf("TestApp.au3")
 	Local Const $oHTTP = SyncRequest("GET", "/object-of-types-response")
 	ProcessClose($pid)
-	Return $oHTTP.Status = 200 And $oHTTP.ResponseText == '{"string": "","number_a": 1337,"number_b": 13.37,"object": {},"array": [],"null": null}'
+	Return $oHTTP.Status = 200 And $oHTTP.ResponseText == '{"string": "","ip": "192.168.1.0","number_a": 1337,"number_b": 13.37,"number_c": "13.37","object": {},"array": [],"null": null,"bool_a": true,"bool_b": false}'
 EndFunc   ;==>testCB_ObjectOfTypesResponse
