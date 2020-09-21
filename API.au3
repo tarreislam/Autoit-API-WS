@@ -405,7 +405,7 @@ Func _API_MGR_ROUTER_HANDLE(Const $mainSocket = $g__API_MainSocket)
 	Do
 		Local $curResp = TCPRecv($connectedSocket, 1024)
 		$response &= $curResp
-	Until @error Or $curResp == ""
+	Until @error Or (StringLen($response) > 0 And $curResp == "")
 
 	; convert crlfs to lf
 	$response = StringReplace($response, @CRLF, @LF)
